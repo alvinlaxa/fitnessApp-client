@@ -1,3 +1,4 @@
+// components/AddWorkout.js
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 
@@ -18,7 +19,9 @@ export default function AddWorkout({ show, handleClose, onWorkoutAdded }) {
 
       if (!response.ok) throw new Error(`Error ${response.status}: ${await response.text()}`);
 
-      onWorkoutAdded();
+      setName(''); // ✅ Clear name field
+      setDuration(''); // ✅ Clear duration field
+      onWorkoutAdded(); // Refresh workouts
       handleClose();
     } catch (error) {
       console.error("Error adding workout:", error);
